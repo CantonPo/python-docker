@@ -1,0 +1,20 @@
+# Usa una imagen base de Python 3
+FROM python:3.10-slim
+
+# Establece el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copia los archivos locales (index.html) al contenedor
+COPY index.html /app/
+
+# Instala Flask (servidor web)
+RUN pip install flask
+
+# Crea un archivo Python para servir el HTML
+COPY app.py /app/
+
+# Expón el puerto 6000
+EXPOSE 6000
+
+# Ejecuta el servidor Flask
+CMD ["python", "app.py"]
